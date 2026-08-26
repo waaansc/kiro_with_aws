@@ -1,0 +1,2885 @@
+{
+ "Resources": {
+  "ItemsTable5AAC2C46": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "id",
+      "AttributeType": "S"
+     },
+     {
+      "AttributeName": "category",
+      "AttributeType": "S"
+     },
+     {
+      "AttributeName": "expiryDate",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "GlobalSecondaryIndexes": [
+     {
+      "IndexName": "category-expiryDate-index",
+      "KeySchema": [
+       {
+        "AttributeName": "category",
+        "KeyType": "HASH"
+       },
+       {
+        "AttributeName": "expiryDate",
+        "KeyType": "RANGE"
+       }
+      ],
+      "Projection": {
+       "ProjectionType": "ALL"
+      }
+     }
+    ],
+    "KeySchema": [
+     {
+      "AttributeName": "id",
+      "KeyType": "HASH"
+     }
+    ],
+    "TableName": "expiry-dashboard-items"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/ItemsTable/Resource"
+   }
+  },
+  "ImageBucket97210811": {
+   "Type": "AWS::S3::Bucket",
+   "Properties": {
+    "BucketName": "expiry-dashboard-images-962500057795",
+    "CorsConfiguration": {
+     "CorsRules": [
+      {
+       "AllowedHeaders": [
+        "*"
+       ],
+       "AllowedMethods": [
+        "GET",
+        "PUT"
+       ],
+       "AllowedOrigins": [
+        "*"
+       ]
+      }
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "aws-cdk:auto-delete-objects",
+      "Value": "true"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/ImageBucket/Resource"
+   }
+  },
+  "ImageBucketPolicy9E7B0384": {
+   "Type": "AWS::S3::BucketPolicy",
+   "Properties": {
+    "Bucket": {
+     "Ref": "ImageBucket97210811"
+    },
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "s3:PutBucketPolicy",
+        "s3:GetBucket*",
+        "s3:List*",
+        "s3:DeleteObject*"
+       ],
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": {
+         "Fn::GetAtt": [
+          "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+          "Arn"
+         ]
+        }
+       },
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "ImageBucket97210811",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "ImageBucket97210811",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/ImageBucket/Policy/Resource"
+   }
+  },
+  "ImageBucketAutoDeleteObjectsCustomResource99A1E17B": {
+   "Type": "Custom::S3AutoDeleteObjects",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+      "Arn"
+     ]
+    },
+    "BucketName": {
+     "Ref": "ImageBucket97210811"
+    }
+   },
+   "DependsOn": [
+    "ImageBucketPolicy9E7B0384"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/ImageBucket/AutoDeleteObjectsCustomResource/Default"
+   }
+  },
+  "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Version": "2012-10-17",
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ]
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Sub": "arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role"
+   }
+  },
+  "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-962500057795-ap-northeast-2",
+     "S3Key": "faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6.zip"
+    },
+    "Timeout": 900,
+    "MemorySize": 128,
+    "Handler": "index.handler",
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs24.x",
+    "Description": {
+     "Fn::Join": [
+      "",
+      [
+       "Lambda function for auto-deleting objects in ",
+       {
+        "Ref": "ImageBucket97210811"
+       },
+       " S3 bucket."
+      ]
+     ]
+    }
+   },
+   "DependsOn": [
+    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler",
+    "aws:asset:path": "asset.faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6",
+    "aws:asset:property": "Code"
+   }
+  },
+  "LambdaRole3A44B857": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/LambdaRole/Resource"
+   }
+  },
+  "LambdaRoleDefaultPolicy75625A82": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "ItemsTable5AAC2C46",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "ItemsTable5AAC2C46",
+             "Arn"
+            ]
+           },
+           "/index/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "ItemsTable5AAC2C46",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "ItemsTable5AAC2C46",
+             "Arn"
+            ]
+           },
+           "/index/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "s3:GetObject*",
+        "s3:GetBucket*",
+        "s3:List*",
+        "s3:DeleteObject*",
+        "s3:PutObject",
+        "s3:PutObjectLegalHold",
+        "s3:PutObjectRetention",
+        "s3:PutObjectTagging",
+        "s3:PutObjectVersionTagging",
+        "s3:Abort*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "ImageBucket97210811",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "ImageBucket97210811",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:Converse",
+        "bedrock:InvokeModelWithResponseStream"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "aws-marketplace:ViewSubscriptions",
+        "aws-marketplace:Subscribe",
+        "aws-marketplace:Unsubscribe"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "LambdaRoleDefaultPolicy75625A82",
+    "Roles": [
+     {
+      "Ref": "LambdaRole3A44B857"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/LambdaRole/DefaultPolicy/Resource"
+   }
+  },
+  "ItemsLambda0B8B92B6": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-962500057795-ap-northeast-2",
+     "S3Key": "1a96e9ef03c2c82f4d7e037954a26bf588c1ed4b233cd968c88a0c6e816a3ead.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "ItemsTable5AAC2C46"
+      },
+      "IMAGE_BUCKET": {
+       "Ref": "ImageBucket97210811"
+      },
+      "BEDROCK_MODEL_ID": "global.openai.gpt-5.6-terra"
+     }
+    },
+    "FunctionName": "expiry-dashboard-items",
+    "Handler": "index.handler",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "LambdaRole3A44B857",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs22.x",
+    "Timeout": 30
+   },
+   "DependsOn": [
+    "LambdaRoleDefaultPolicy75625A82",
+    "LambdaRole3A44B857"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/ItemsLambda/Resource",
+    "aws:asset:path": "asset.1a96e9ef03c2c82f4d7e037954a26bf588c1ed4b233cd968c88a0c6e816a3ead",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "ChatLambda59BC07ED": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-962500057795-ap-northeast-2",
+     "S3Key": "2a8db01b52adbc0f6391fc5f557dffb858903f1f523cb4267c5ce5405a2369a2.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "ItemsTable5AAC2C46"
+      },
+      "IMAGE_BUCKET": {
+       "Ref": "ImageBucket97210811"
+      },
+      "BEDROCK_MODEL_ID": "global.openai.gpt-5.6-terra"
+     }
+    },
+    "FunctionName": "expiry-dashboard-chat",
+    "Handler": "index.handler",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "LambdaRole3A44B857",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs22.x",
+    "Timeout": 60
+   },
+   "DependsOn": [
+    "LambdaRoleDefaultPolicy75625A82",
+    "LambdaRole3A44B857"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/ChatLambda/Resource",
+    "aws:asset:path": "asset.2a8db01b52adbc0f6391fc5f557dffb858903f1f523cb4267c5ce5405a2369a2",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "ImageLambdaE70DA37A": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-962500057795-ap-northeast-2",
+     "S3Key": "35c6a8eeef4498ce9599bdba63530ee0c2fc52a5f5e0d85b2aaffcadf9a6103e.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "ItemsTable5AAC2C46"
+      },
+      "IMAGE_BUCKET": {
+       "Ref": "ImageBucket97210811"
+      },
+      "BEDROCK_MODEL_ID": "global.openai.gpt-5.6-terra"
+     }
+    },
+    "FunctionName": "expiry-dashboard-image",
+    "Handler": "index.handler",
+    "MemorySize": 512,
+    "Role": {
+     "Fn::GetAtt": [
+      "LambdaRole3A44B857",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs22.x",
+    "Timeout": 60
+   },
+   "DependsOn": [
+    "LambdaRoleDefaultPolicy75625A82",
+    "LambdaRole3A44B857"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/ImageLambda/Resource",
+    "aws:asset:path": "asset.35c6a8eeef4498ce9599bdba63530ee0c2fc52a5f5e0d85b2aaffcadf9a6103e",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "LocationLambda0E7B39F0": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-962500057795-ap-northeast-2",
+     "S3Key": "f60158a32242631e49d7b7aa29cac794f2b4fb57e98e59b1ce2e9b168c9b1cdf.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "ItemsTable5AAC2C46"
+      },
+      "IMAGE_BUCKET": {
+       "Ref": "ImageBucket97210811"
+      },
+      "BEDROCK_MODEL_ID": "global.openai.gpt-5.6-terra",
+      "KAKAO_API_KEY": "REDACTED_KAKAO_API_KEY"
+     }
+    },
+    "FunctionName": "expiry-dashboard-location",
+    "Handler": "index.handler",
+    "MemorySize": 128,
+    "Role": {
+     "Fn::GetAtt": [
+      "LambdaRole3A44B857",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs22.x",
+    "Timeout": 10
+   },
+   "DependsOn": [
+    "LambdaRoleDefaultPolicy75625A82",
+    "LambdaRole3A44B857"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/LocationLambda/Resource",
+    "aws:asset:path": "asset.f60158a32242631e49d7b7aa29cac794f2b4fb57e98e59b1ce2e9b168c9b1cdf",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "DashboardApi9FF75625": {
+   "Type": "AWS::ApiGateway::RestApi",
+   "Properties": {
+    "Name": "expiry-dashboard-api"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Resource"
+   }
+  },
+  "DashboardApiCloudWatchRoleD6CF732E": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "apigateway.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+       ]
+      ]
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/CloudWatchRole/Resource"
+   }
+  },
+  "DashboardApiAccount8FA38E2B": {
+   "Type": "AWS::ApiGateway::Account",
+   "Properties": {
+    "CloudWatchRoleArn": {
+     "Fn::GetAtt": [
+      "DashboardApiCloudWatchRoleD6CF732E",
+      "Arn"
+     ]
+    }
+   },
+   "DependsOn": [
+    "DashboardApi9FF75625"
+   ],
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Account"
+   }
+  },
+  "DashboardApiDeploymentCC168B25bac759ba662c8127d31d5c4b3a83aea3": {
+   "Type": "AWS::ApiGateway::Deployment",
+   "Properties": {
+    "Description": "Automatically created by the RestApi construct",
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "DependsOn": [
+    "DashboardApiapichatimageOPTIONS18864C3C",
+    "DashboardApiapichatimagePOSTFB60B3B3",
+    "DashboardApiapichatimage4C1AE0D9",
+    "DashboardApiapichatOPTIONSD84F8F91",
+    "DashboardApiapichatPOSTCA8C30C8",
+    "DashboardApiapichat6BDF86C9",
+    "DashboardApiapiitemsidDELETE9D6093A5",
+    "DashboardApiapiitemsidGETBA9F6E5B",
+    "DashboardApiapiitemsidOPTIONSD0A80752",
+    "DashboardApiapiitemsidPUTA9C565E3",
+    "DashboardApiapiitemsid204FE285",
+    "DashboardApiapiitemsidrestoreOPTIONS183CA9A9",
+    "DashboardApiapiitemsidrestorePATCHB14BA7CE",
+    "DashboardApiapiitemsidrestoreB88E349D",
+    "DashboardApiapiitemsarchiveexpiredOPTIONS6118A237",
+    "DashboardApiapiitemsarchiveexpiredPOST2964B075",
+    "DashboardApiapiitemsarchiveexpired76297D00",
+    "DashboardApiapiitemsGET4C7B5D3F",
+    "DashboardApiapiitemsOPTIONS6FA07267",
+    "DashboardApiapiitemsPOSTADFEF579",
+    "DashboardApiapiitems7D520FA9",
+    "DashboardApiapilocationsbrandGETFEFD081B",
+    "DashboardApiapilocationsbrandOPTIONSF3585B5A",
+    "DashboardApiapilocationsbrandCBA69957",
+    "DashboardApiapilocationsOPTIONS069AD754",
+    "DashboardApiapilocations621DC37D",
+    "DashboardApiapiOPTIONS460175D2",
+    "DashboardApiapi1A8EE08D",
+    "DashboardApiOPTIONSE0D0D1A6"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Deployment/Resource",
+    "aws:cdk:do-not-refactor": true
+   }
+  },
+  "DashboardApiDeploymentStageprodAE4EBC46": {
+   "Type": "AWS::ApiGateway::Stage",
+   "Properties": {
+    "DeploymentId": {
+     "Ref": "DashboardApiDeploymentCC168B25bac759ba662c8127d31d5c4b3a83aea3"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    },
+    "StageName": "prod"
+   },
+   "DependsOn": [
+    "DashboardApiAccount8FA38E2B"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/DeploymentStage.prod/Resource"
+   }
+  },
+  "DashboardApiOPTIONSE0D0D1A6": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Fn::GetAtt": [
+      "DashboardApi9FF75625",
+      "RootResourceId"
+     ]
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/OPTIONS/Resource"
+   }
+  },
+  "DashboardApiapi1A8EE08D": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "DashboardApi9FF75625",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "api",
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/Resource"
+   }
+  },
+  "DashboardApiapiOPTIONS460175D2": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "DashboardApiapi1A8EE08D"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/OPTIONS/Resource"
+   }
+  },
+  "DashboardApiapiitems7D520FA9": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "DashboardApiapi1A8EE08D"
+    },
+    "PathPart": "items",
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/Resource"
+   }
+  },
+  "DashboardApiapiitemsOPTIONS6FA07267": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "DashboardApiapiitems7D520FA9"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/OPTIONS/Resource"
+   }
+  },
+  "DashboardApiapiitemsid204FE285": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "DashboardApiapiitems7D520FA9"
+    },
+    "PathPart": "{id}",
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/Resource"
+   }
+  },
+  "DashboardApiapiitemsidOPTIONSD0A80752": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "DashboardApiapiitemsid204FE285"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/OPTIONS/Resource"
+   }
+  },
+  "DashboardApiapiitemsidrestoreB88E349D": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "DashboardApiapiitemsid204FE285"
+    },
+    "PathPart": "restore",
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/restore/Resource"
+   }
+  },
+  "DashboardApiapiitemsidrestoreOPTIONS183CA9A9": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "DashboardApiapiitemsidrestoreB88E349D"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/restore/OPTIONS/Resource"
+   }
+  },
+  "DashboardApiapiitemsidrestorePATCHApiPermissionExpiryDashboardStackDashboardApi34C3AFB3PATCHapiitemsidrestore4C05B778": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ItemsLambda0B8B92B6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/",
+       {
+        "Ref": "DashboardApiDeploymentStageprodAE4EBC46"
+       },
+       "/PATCH/api/items/*/restore"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/restore/PATCH/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.PATCH..api.items.{id}.restore"
+   }
+  },
+  "DashboardApiapiitemsidrestorePATCHApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3PATCHapiitemsidrestore553DF99A": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ItemsLambda0B8B92B6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/test-invoke-stage/PATCH/api/items/*/restore"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/restore/PATCH/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.PATCH..api.items.{id}.restore"
+   }
+  },
+  "DashboardApiapiitemsidrestorePATCHB14BA7CE": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "PATCH",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:ap-northeast-2:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "ItemsLambda0B8B92B6",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "DashboardApiapiitemsidrestoreB88E349D"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/restore/PATCH/Resource"
+   }
+  },
+  "DashboardApiapiitemsidGETApiPermissionExpiryDashboardStackDashboardApi34C3AFB3GETapiitemsidB6DD4C4D": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ItemsLambda0B8B92B6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/",
+       {
+        "Ref": "DashboardApiDeploymentStageprodAE4EBC46"
+       },
+       "/GET/api/items/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/GET/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.GET..api.items.{id}"
+   }
+  },
+  "DashboardApiapiitemsidGETApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3GETapiitemsid6966AB60": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ItemsLambda0B8B92B6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/test-invoke-stage/GET/api/items/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/GET/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.GET..api.items.{id}"
+   }
+  },
+  "DashboardApiapiitemsidGETBA9F6E5B": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:ap-northeast-2:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "ItemsLambda0B8B92B6",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "DashboardApiapiitemsid204FE285"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/GET/Resource"
+   }
+  },
+  "DashboardApiapiitemsidPUTApiPermissionExpiryDashboardStackDashboardApi34C3AFB3PUTapiitemsidF5B81431": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ItemsLambda0B8B92B6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/",
+       {
+        "Ref": "DashboardApiDeploymentStageprodAE4EBC46"
+       },
+       "/PUT/api/items/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/PUT/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.PUT..api.items.{id}"
+   }
+  },
+  "DashboardApiapiitemsidPUTApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3PUTapiitemsid8BF78A30": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ItemsLambda0B8B92B6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/test-invoke-stage/PUT/api/items/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/PUT/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.PUT..api.items.{id}"
+   }
+  },
+  "DashboardApiapiitemsidPUTA9C565E3": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "PUT",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:ap-northeast-2:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "ItemsLambda0B8B92B6",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "DashboardApiapiitemsid204FE285"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/PUT/Resource"
+   }
+  },
+  "DashboardApiapiitemsidDELETEApiPermissionExpiryDashboardStackDashboardApi34C3AFB3DELETEapiitemsid3DC0E6CD": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ItemsLambda0B8B92B6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/",
+       {
+        "Ref": "DashboardApiDeploymentStageprodAE4EBC46"
+       },
+       "/DELETE/api/items/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/DELETE/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.DELETE..api.items.{id}"
+   }
+  },
+  "DashboardApiapiitemsidDELETEApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3DELETEapiitemsidD174FFF7": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ItemsLambda0B8B92B6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/test-invoke-stage/DELETE/api/items/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/DELETE/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.DELETE..api.items.{id}"
+   }
+  },
+  "DashboardApiapiitemsidDELETE9D6093A5": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "DELETE",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:ap-northeast-2:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "ItemsLambda0B8B92B6",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "DashboardApiapiitemsid204FE285"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/DELETE/Resource"
+   }
+  },
+  "DashboardApiapiitemsarchiveexpired76297D00": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "DashboardApiapiitems7D520FA9"
+    },
+    "PathPart": "archive-expired",
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/archive-expired/Resource"
+   }
+  },
+  "DashboardApiapiitemsarchiveexpiredOPTIONS6118A237": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "DashboardApiapiitemsarchiveexpired76297D00"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/archive-expired/OPTIONS/Resource"
+   }
+  },
+  "DashboardApiapiitemsarchiveexpiredPOSTApiPermissionExpiryDashboardStackDashboardApi34C3AFB3POSTapiitemsarchiveexpiredE20856F9": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ItemsLambda0B8B92B6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/",
+       {
+        "Ref": "DashboardApiDeploymentStageprodAE4EBC46"
+       },
+       "/POST/api/items/archive-expired"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/archive-expired/POST/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.items.archive-expired"
+   }
+  },
+  "DashboardApiapiitemsarchiveexpiredPOSTApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3POSTapiitemsarchiveexpired3EB4DD2A": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ItemsLambda0B8B92B6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/test-invoke-stage/POST/api/items/archive-expired"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/archive-expired/POST/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.items.archive-expired"
+   }
+  },
+  "DashboardApiapiitemsarchiveexpiredPOST2964B075": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:ap-northeast-2:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "ItemsLambda0B8B92B6",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "DashboardApiapiitemsarchiveexpired76297D00"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/archive-expired/POST/Resource"
+   }
+  },
+  "DashboardApiapiitemsGETApiPermissionExpiryDashboardStackDashboardApi34C3AFB3GETapiitems96A40D82": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ItemsLambda0B8B92B6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/",
+       {
+        "Ref": "DashboardApiDeploymentStageprodAE4EBC46"
+       },
+       "/GET/api/items"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/GET/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.GET..api.items"
+   }
+  },
+  "DashboardApiapiitemsGETApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3GETapiitems79786B6A": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ItemsLambda0B8B92B6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/test-invoke-stage/GET/api/items"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/GET/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.GET..api.items"
+   }
+  },
+  "DashboardApiapiitemsGET4C7B5D3F": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:ap-northeast-2:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "ItemsLambda0B8B92B6",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "DashboardApiapiitems7D520FA9"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/GET/Resource"
+   }
+  },
+  "DashboardApiapiitemsPOSTApiPermissionExpiryDashboardStackDashboardApi34C3AFB3POSTapiitems0FA528A4": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ItemsLambda0B8B92B6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/",
+       {
+        "Ref": "DashboardApiDeploymentStageprodAE4EBC46"
+       },
+       "/POST/api/items"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/POST/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.items"
+   }
+  },
+  "DashboardApiapiitemsPOSTApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3POSTapiitems6B28F370": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ItemsLambda0B8B92B6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/test-invoke-stage/POST/api/items"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/POST/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.items"
+   }
+  },
+  "DashboardApiapiitemsPOSTADFEF579": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:ap-northeast-2:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "ItemsLambda0B8B92B6",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "DashboardApiapiitems7D520FA9"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/items/POST/Resource"
+   }
+  },
+  "DashboardApiapichat6BDF86C9": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "DashboardApiapi1A8EE08D"
+    },
+    "PathPart": "chat",
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/chat/Resource"
+   }
+  },
+  "DashboardApiapichatOPTIONSD84F8F91": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "DashboardApiapichat6BDF86C9"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/chat/OPTIONS/Resource"
+   }
+  },
+  "DashboardApiapichatPOSTApiPermissionExpiryDashboardStackDashboardApi34C3AFB3POSTapichat44515DBB": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ChatLambda59BC07ED",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/",
+       {
+        "Ref": "DashboardApiDeploymentStageprodAE4EBC46"
+       },
+       "/POST/api/chat"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/chat/POST/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.chat"
+   }
+  },
+  "DashboardApiapichatPOSTApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3POSTapichatB4AA5ABF": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ChatLambda59BC07ED",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/test-invoke-stage/POST/api/chat"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/chat/POST/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.chat"
+   }
+  },
+  "DashboardApiapichatPOSTCA8C30C8": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:ap-northeast-2:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "ChatLambda59BC07ED",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "DashboardApiapichat6BDF86C9"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/chat/POST/Resource"
+   }
+  },
+  "DashboardApiapichatimage4C1AE0D9": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "DashboardApiapichat6BDF86C9"
+    },
+    "PathPart": "image",
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/chat/image/Resource"
+   }
+  },
+  "DashboardApiapichatimageOPTIONS18864C3C": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "DashboardApiapichatimage4C1AE0D9"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/chat/image/OPTIONS/Resource"
+   }
+  },
+  "DashboardApiapichatimagePOSTApiPermissionExpiryDashboardStackDashboardApi34C3AFB3POSTapichatimage6F3EFC54": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ImageLambdaE70DA37A",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/",
+       {
+        "Ref": "DashboardApiDeploymentStageprodAE4EBC46"
+       },
+       "/POST/api/chat/image"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/chat/image/POST/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.chat.image"
+   }
+  },
+  "DashboardApiapichatimagePOSTApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3POSTapichatimage225592F9": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "ImageLambdaE70DA37A",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/test-invoke-stage/POST/api/chat/image"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/chat/image/POST/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.chat.image"
+   }
+  },
+  "DashboardApiapichatimagePOSTFB60B3B3": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:ap-northeast-2:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "ImageLambdaE70DA37A",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "DashboardApiapichatimage4C1AE0D9"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/chat/image/POST/Resource"
+   }
+  },
+  "DashboardApiapilocations621DC37D": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "DashboardApiapi1A8EE08D"
+    },
+    "PathPart": "locations",
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/locations/Resource"
+   }
+  },
+  "DashboardApiapilocationsOPTIONS069AD754": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "DashboardApiapilocations621DC37D"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/locations/OPTIONS/Resource"
+   }
+  },
+  "DashboardApiapilocationsbrandCBA69957": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "DashboardApiapilocations621DC37D"
+    },
+    "PathPart": "{brand}",
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/locations/{brand}/Resource"
+   }
+  },
+  "DashboardApiapilocationsbrandOPTIONSF3585B5A": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,Authorization'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "DashboardApiapilocationsbrandCBA69957"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/locations/{brand}/OPTIONS/Resource"
+   }
+  },
+  "DashboardApiapilocationsbrandGETApiPermissionExpiryDashboardStackDashboardApi34C3AFB3GETapilocationsbrand37D4E60C": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "LocationLambda0E7B39F0",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/",
+       {
+        "Ref": "DashboardApiDeploymentStageprodAE4EBC46"
+       },
+       "/GET/api/locations/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/locations/{brand}/GET/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.GET..api.locations.{brand}"
+   }
+  },
+  "DashboardApiapilocationsbrandGETApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3GETapilocationsbrand3C6CB24B": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "LocationLambda0E7B39F0",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:ap-northeast-2:962500057795:",
+       {
+        "Ref": "DashboardApi9FF75625"
+       },
+       "/test-invoke-stage/GET/api/locations/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/locations/{brand}/GET/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.GET..api.locations.{brand}"
+   }
+  },
+  "DashboardApiapilocationsbrandGETFEFD081B": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:ap-northeast-2:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "LocationLambda0E7B39F0",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "DashboardApiapilocationsbrandCBA69957"
+    },
+    "RestApiId": {
+     "Ref": "DashboardApi9FF75625"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DashboardApi/Default/api/locations/{brand}/GET/Resource"
+   }
+  },
+  "FrontendBucketEFE2E19C": {
+   "Type": "AWS::S3::Bucket",
+   "Properties": {
+    "BucketName": "expiry-dashboard-frontend-962500057795",
+    "PublicAccessBlockConfiguration": {
+     "BlockPublicAcls": true,
+     "BlockPublicPolicy": true,
+     "IgnorePublicAcls": true,
+     "RestrictPublicBuckets": true
+    },
+    "Tags": [
+     {
+      "Key": "aws-cdk:auto-delete-objects",
+      "Value": "true"
+     },
+     {
+      "Key": "aws-cdk:cr-owned:eb8f94f1",
+      "Value": "true"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/FrontendBucket/Resource"
+   }
+  },
+  "FrontendBucketPolicy1DFF75D9": {
+   "Type": "AWS::S3::BucketPolicy",
+   "Properties": {
+    "Bucket": {
+     "Ref": "FrontendBucketEFE2E19C"
+    },
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "s3:PutBucketPolicy",
+        "s3:GetBucket*",
+        "s3:List*",
+        "s3:DeleteObject*"
+       ],
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": {
+         "Fn::GetAtt": [
+          "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+          "Arn"
+         ]
+        }
+       },
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "FrontendBucketEFE2E19C",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "FrontendBucketEFE2E19C",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": "s3:GetObject",
+       "Condition": {
+        "StringEquals": {
+         "AWS:SourceArn": {
+          "Fn::Join": [
+           "",
+           [
+            "arn:",
+            {
+             "Ref": "AWS::Partition"
+            },
+            ":cloudfront::",
+            {
+             "Ref": "AWS::AccountId"
+            },
+            ":distribution/",
+            {
+             "Ref": "FrontendCDNF4E135DE"
+            }
+           ]
+          ]
+         }
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "cloudfront.amazonaws.com"
+       },
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::GetAtt": [
+            "FrontendBucketEFE2E19C",
+            "Arn"
+           ]
+          },
+          "/*"
+         ]
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/FrontendBucket/Policy/Resource"
+   }
+  },
+  "FrontendBucketAutoDeleteObjectsCustomResourceDB860B32": {
+   "Type": "Custom::S3AutoDeleteObjects",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+      "Arn"
+     ]
+    },
+    "BucketName": {
+     "Ref": "FrontendBucketEFE2E19C"
+    }
+   },
+   "DependsOn": [
+    "FrontendBucketPolicy1DFF75D9"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/FrontendBucket/AutoDeleteObjectsCustomResource/Default"
+   }
+  },
+  "FrontendCDNOrigin1S3OriginAccessControl90F0FB16": {
+   "Type": "AWS::CloudFront::OriginAccessControl",
+   "Properties": {
+    "OriginAccessControlConfig": {
+     "Name": "ExpiryDashboardStackFrontendOrigin1S3OriginAccessControl632695BB",
+     "OriginAccessControlOriginType": "s3",
+     "SigningBehavior": "always",
+     "SigningProtocol": "sigv4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/FrontendCDN/Origin1/S3OriginAccessControl/Resource"
+   }
+  },
+  "FrontendCDNF4E135DE": {
+   "Type": "AWS::CloudFront::Distribution",
+   "Properties": {
+    "DistributionConfig": {
+     "CustomErrorResponses": [
+      {
+       "ErrorCode": 403,
+       "ResponseCode": 200,
+       "ResponsePagePath": "/index.html"
+      },
+      {
+       "ErrorCode": 404,
+       "ResponseCode": 200,
+       "ResponsePagePath": "/index.html"
+      }
+     ],
+     "DefaultCacheBehavior": {
+      "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+      "Compress": true,
+      "TargetOriginId": "ExpiryDashboardStackFrontendCDNOrigin148B0876E",
+      "ViewerProtocolPolicy": "redirect-to-https"
+     },
+     "DefaultRootObject": "index.html",
+     "Enabled": true,
+     "HttpVersion": "http2",
+     "IPV6Enabled": true,
+     "Origins": [
+      {
+       "DomainName": {
+        "Fn::GetAtt": [
+         "FrontendBucketEFE2E19C",
+         "RegionalDomainName"
+        ]
+       },
+       "Id": "ExpiryDashboardStackFrontendCDNOrigin148B0876E",
+       "OriginAccessControlId": {
+        "Fn::GetAtt": [
+         "FrontendCDNOrigin1S3OriginAccessControl90F0FB16",
+         "Id"
+        ]
+       },
+       "S3OriginConfig": {
+        "OriginAccessIdentity": ""
+       }
+      }
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/FrontendCDN/Resource"
+   }
+  },
+  "DeployFrontendAwsCliLayerD774ED8F": {
+   "Type": "AWS::Lambda::LayerVersion",
+   "Properties": {
+    "Content": {
+     "S3Bucket": "cdk-hnb659fds-assets-962500057795-ap-northeast-2",
+     "S3Key": "98f62bef9320f8c0a0a7be21d7c746f069131f196f51ffe3008a6bb730b368ec.zip"
+    },
+    "Description": "/opt/awscli/aws"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DeployFrontend/AwsCliLayer/Resource",
+    "aws:asset:path": "asset.98f62bef9320f8c0a0a7be21d7c746f069131f196f51ffe3008a6bb730b368ec.zip",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Content"
+   }
+  },
+  "DeployFrontendCustomResource3E02C3B7": {
+   "Type": "Custom::CDKBucketDeployment",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
+      "Arn"
+     ]
+    },
+    "SourceBucketNames": [
+     "cdk-hnb659fds-assets-962500057795-ap-northeast-2"
+    ],
+    "SourceObjectKeys": [
+     "b885472ed3cd37d3e9c63e11015319108aca0dd747052e691a86fae2cfb8e85f.zip"
+    ],
+    "DestinationBucketName": {
+     "Ref": "FrontendBucketEFE2E19C"
+    },
+    "WaitForDistributionInvalidation": true,
+    "Prune": true,
+    "DistributionId": {
+     "Ref": "FrontendCDNF4E135DE"
+    },
+    "DistributionPaths": [
+     "/*"
+    ],
+    "OutputObjectKeys": true
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/DeployFrontend/CustomResource/Default"
+   }
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource"
+   }
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "s3:GetObject*",
+        "s3:GetBucket*",
+        "s3:List*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":s3:::cdk-hnb659fds-assets-962500057795-ap-northeast-2"
+          ]
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":s3:::cdk-hnb659fds-assets-962500057795-ap-northeast-2/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "s3:GetObject*",
+        "s3:GetBucket*",
+        "s3:List*",
+        "s3:DeleteObject*",
+        "s3:PutObject",
+        "s3:PutObjectLegalHold",
+        "s3:PutObjectRetention",
+        "s3:PutObjectTagging",
+        "s3:PutObjectVersionTagging",
+        "s3:Abort*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "FrontendBucketEFE2E19C",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "FrontendBucketEFE2E19C",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "cloudfront:GetInvalidation",
+        "cloudfront:CreateInvalidation"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+    "Roles": [
+     {
+      "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-962500057795-ap-northeast-2",
+     "S3Key": "97e9ebf0b174a5c8f7faa505739022b7f509edddffcab9211dcd08b759944c4f.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "AWS_CA_BUNDLE": "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem"
+     }
+    },
+    "Handler": "index.handler",
+    "Layers": [
+     {
+      "Ref": "DeployFrontendAwsCliLayerD774ED8F"
+     }
+    ],
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+      "Arn"
+     ]
+    },
+    "Runtime": "python3.13",
+    "Timeout": 900
+   },
+   "DependsOn": [
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource",
+    "aws:asset:path": "asset.97e9ebf0b174a5c8f7faa505739022b7f509edddffcab9211dcd08b759944c4f",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/6VRTW/bMAz9Lc1Z0doEKLDd3AQ9bWsRD7sMQyDLjMdElgKRqmcI/u+D5LgO9nEoduLj53skV3J1fy9vb1RHS12flgYrGUtW+iRUR/tY91a1rq5k/KIqA2JzsBkMgtYyPgR9Ak7BEX2LixZ/ol18WFwPTJNoLXOK5FhaBHZbMMDwVB1BMy0G8V/d38WYenYGdT9rGv03KBsbSlYMLdg3CvuzedL1oAgGgaqVcefGS2Y76x3RIIxqq1rtravhSPJzNo/BakZnBa33UREBkyySETWcjesT2UXC9jUwjZJxc7CvExIT+BaJLt5H1YP/Cj77JdrGALu5fgKDUGdsFEOnehl3QFycMa8xw0JrFyyLWUOKXnklqybvPoIdkAteQzqO+AT8w9UpeUFT9kKS8SC0caE+eGdZxi0Se6xCFlqunzw2mEQA0cZZ9s6k3n+Er5uH4YotELv2b+S/pZ69e8EafFafv5G2Qttk0sDnwNMzTbrxXnWkDcqio43BfPZBpDfLI717Wa3k3Xt5e3MkxKUPlrEFuRvtL4bVNNqnAwAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ExpiryDashboardStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "DashboardApiEndpointF6B50E53": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "DashboardApi9FF75625"
+      },
+      ".execute-api.ap-northeast-2.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "DashboardApiDeploymentStageprodAE4EBC46"
+      },
+      "/"
+     ]
+    ]
+   }
+  },
+  "ApiUrl": {
+   "Description": "API Gateway URL",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "DashboardApi9FF75625"
+      },
+      ".execute-api.ap-northeast-2.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "DashboardApiDeploymentStageprodAE4EBC46"
+      },
+      "/"
+     ]
+    ]
+   }
+  },
+  "CloudFrontUrl": {
+   "Description": "프론트엔드 CloudFront URL",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Fn::GetAtt": [
+        "FrontendCDNF4E135DE",
+        "DomainName"
+       ]
+      }
+     ]
+    ]
+   }
+  },
+  "TableName": {
+   "Value": {
+    "Ref": "ItemsTable5AAC2C46"
+   }
+  },
+  "ImageBucketName": {
+   "Value": {
+    "Ref": "ImageBucket97210811"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

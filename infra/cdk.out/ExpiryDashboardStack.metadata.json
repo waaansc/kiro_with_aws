@@ -1,0 +1,1344 @@
+{
+  "/ExpiryDashboardStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/ItemsTable": [
+    {
+      "type": "aws:cdk:hasPhysicalName",
+      "data": {
+        "Ref": "ItemsTable5AAC2C46"
+      }
+    }
+  ],
+  "/ExpiryDashboardStack/Custom::S3AutoDeleteObjectsCustomResourceProvider": [
+    {
+      "type": "aws:cdk:is-custom-resource-handler-customResourceProvider",
+      "data": true
+    }
+  ],
+  "/ExpiryDashboardStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C": [
+    {
+      "type": "aws:cdk:is-custom-resource-handler-singleton",
+      "data": true
+    },
+    {
+      "type": "aws:cdk:is-custom-resource-handler-runtime-family",
+      "data": 2
+    }
+  ],
+  "/ExpiryDashboardStack/ApiUrl": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiUrl"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:223:5)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/CloudFrontUrl": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudFrontUrl"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:228:5)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/TableName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TableName"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:233:5)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/ImageBucketName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ImageBucketName"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:234:5)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/ItemsTable/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ItemsTable5AAC2C46"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Table2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:21:19)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/ImageBucket/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ImageBucket97210811"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:37:25)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketAutoDeleteObjects"
+      }
+    }
+  ],
+  "/ExpiryDashboardStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/LambdaRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LambdaRole3A44B857"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:51:24)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/ItemsLambda/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ItemsLambda0B8B92B6"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new NodejsFunction in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:93:25)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/ChatLambda/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ChatLambda59BC07ED"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new NodejsFunction in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:107:24)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/ImageLambda/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ImageLambdaE70DA37A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new NodejsFunction in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:121:25)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/LocationLambda/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LocationLambda0E7B39F0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new NodejsFunction in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:135:28)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApi9FF75625"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:154:17)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Account": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiAccount8FA38E2B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:154:17)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Endpoint": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiEndpointF6B50E53"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:154:17)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/FrontendBucket/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FrontendBucketEFE2E19C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:194:28)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketAutoDeleteObjects"
+      }
+    }
+  ],
+  "/ExpiryDashboardStack/FrontendCDN/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FrontendCDNF4E135DE"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Distribution2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:201:26)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new BucketDeployment2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:213:5)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/ImageBucket/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ImageBucketPolicy9E7B0384"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:37:25)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)"
+      ]
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketPolicyStatements"
+      }
+    }
+  ],
+  "/ExpiryDashboardStack/ImageBucket/AutoDeleteObjectsCustomResource/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ImageBucketAutoDeleteObjectsCustomResource99A1E17B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/LambdaRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "LambdaRoleDefaultPolicy75625A82"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/CloudWatchRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiCloudWatchRoleD6CF732E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:154:17)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Deployment/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiDeploymentCC168B25bac759ba662c8127d31d5c4b3a83aea3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:154:17)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/DeploymentStage.prod/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiDeploymentStageprodAE4EBC46"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:154:17)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/FrontendBucket/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FrontendBucketPolicy1DFF75D9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:194:28)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)"
+      ]
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketPolicyStatements"
+      }
+    }
+  ],
+  "/ExpiryDashboardStack/FrontendBucket/AutoDeleteObjectsCustomResource/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FrontendBucketAutoDeleteObjectsCustomResourceDB860B32"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DeployFrontend/AwsCliLayer/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DeployFrontendAwsCliLayerD774ED8F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new BucketDeployment2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:213:5)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DeployFrontend/CustomResource/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DeployFrontendCustomResource3E02C3B7"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new BucketDeployment2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:213:5)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiOPTIONSE0D0D1A6"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:154:17)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapi1A8EE08D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...RootResource.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:163:34)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/FrontendCDN/Origin1/S3OriginAccessControl/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FrontendCDNOrigin1S3OriginAccessControl90F0FB16"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Distribution2 in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:201:26)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiOPTIONS460175D2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...RootResource.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:163:34)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitems7D520FA9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:164:39)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/chat/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapichat6BDF86C9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:178:38)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/locations/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapilocations621DC37D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:186:43)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsOPTIONS6FA07267"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:164:39)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsid204FE285"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:165:42)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/archive-expired/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsarchiveexpired76297D00"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:166:50)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/GET/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.GET..api.items": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsGETApiPermissionExpiryDashboardStackDashboardApi34C3AFB3GETapiitems96A40D82"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:170:19)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/GET/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.GET..api.items": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsGETApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3GETapiitems79786B6A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:170:19)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsGET4C7B5D3F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:170:19)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/POST/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.items": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsPOSTApiPermissionExpiryDashboardStackDashboardApi34C3AFB3POSTapiitems0FA528A4"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:171:19)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/POST/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.items": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsPOSTApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3POSTapiitems6B28F370"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:171:19)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/POST/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsPOSTADFEF579"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:171:19)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/chat/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapichatOPTIONSD84F8F91"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:178:38)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/chat/POST/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.chat": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapichatPOSTApiPermissionExpiryDashboardStackDashboardApi34C3AFB3POSTapichat44515DBB"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:180:18)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/chat/POST/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.chat": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapichatPOSTApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3POSTapichatB4AA5ABF"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:180:18)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/chat/POST/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapichatPOSTCA8C30C8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:180:18)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/chat/image/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapichatimage4C1AE0D9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:182:44)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/locations/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapilocationsOPTIONS069AD754"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:186:43)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/locations/{brand}/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapilocationsbrandCBA69957"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:187:45)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidOPTIONSD0A80752"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:165:42)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/restore/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidrestoreB88E349D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:167:44)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/GET/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.GET..api.items.{id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidGETApiPermissionExpiryDashboardStackDashboardApi34C3AFB3GETapiitemsidB6DD4C4D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:172:20)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/GET/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.GET..api.items.{id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidGETApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3GETapiitemsid6966AB60"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:172:20)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidGETBA9F6E5B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:172:20)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/PUT/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.PUT..api.items.{id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidPUTApiPermissionExpiryDashboardStackDashboardApi34C3AFB3PUTapiitemsidF5B81431"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:173:20)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/PUT/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.PUT..api.items.{id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidPUTApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3PUTapiitemsid8BF78A30"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:173:20)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/PUT/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidPUTA9C565E3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:173:20)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/DELETE/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.DELETE..api.items.{id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidDELETEApiPermissionExpiryDashboardStackDashboardApi34C3AFB3DELETEapiitemsid3DC0E6CD"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:174:20)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/DELETE/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.DELETE..api.items.{id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidDELETEApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3DELETEapiitemsidD174FFF7"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:174:20)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/DELETE/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidDELETE9D6093A5"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:174:20)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/archive-expired/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsarchiveexpiredOPTIONS6118A237"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:166:50)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/archive-expired/POST/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.items.archive-expired": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsarchiveexpiredPOSTApiPermissionExpiryDashboardStackDashboardApi34C3AFB3POSTapiitemsarchiveexpiredE20856F9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:175:28)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/archive-expired/POST/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.items.archive-expired": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsarchiveexpiredPOSTApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3POSTapiitemsarchiveexpired3EB4DD2A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:175:28)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/archive-expired/POST/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsarchiveexpiredPOST2964B075"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:175:28)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/chat/image/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapichatimageOPTIONS18864C3C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:182:44)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/chat/image/POST/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.chat.image": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapichatimagePOSTApiPermissionExpiryDashboardStackDashboardApi34C3AFB3POSTapichatimage6F3EFC54"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:184:23)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/chat/image/POST/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.POST..api.chat.image": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapichatimagePOSTApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3POSTapichatimage225592F9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:184:23)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/chat/image/POST/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapichatimagePOSTFB60B3B3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:184:23)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/locations/{brand}/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapilocationsbrandOPTIONSF3585B5A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:187:45)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/locations/{brand}/GET/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.GET..api.locations.{brand}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapilocationsbrandGETApiPermissionExpiryDashboardStackDashboardApi34C3AFB3GETapilocationsbrand37D4E60C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:189:19)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/locations/{brand}/GET/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.GET..api.locations.{brand}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapilocationsbrandGETApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3GETapilocationsbrand3C6CB24B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:189:19)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/locations/{brand}/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapilocationsbrandGETFEFD081B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:189:19)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/restore/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidrestoreOPTIONS183CA9A9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:167:44)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/restore/PATCH/ApiPermission.ExpiryDashboardStackDashboardApi34C3AFB3.PATCH..api.items.{id}.restore": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidrestorePATCHApiPermissionExpiryDashboardStackDashboardApi34C3AFB3PATCHapiitemsidrestore4C05B778"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:176:21)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/restore/PATCH/ApiPermission.Test.ExpiryDashboardStackDashboardApi34C3AFB3.PATCH..api.items.{id}.restore": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidrestorePATCHApiPermissionTestExpiryDashboardStackDashboardApi34C3AFB3PATCHapiitemsidrestore553DF99A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:176:21)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/ExpiryDashboardStack/DashboardApi/Default/api/items/{id}/restore/PATCH/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApiapiitemsidrestorePATCHB14BA7CE"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:176:21)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
+        "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
+        "...node internals, tsx..."
+      ]
+    }
+  ]
+}
