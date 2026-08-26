@@ -1,8 +1,9 @@
-import { BedrockRuntimeClient, InvokeModelCommand } from '@aws-sdk/client-bedrock-runtime';
+import { BedrockRuntimeClient, ConverseCommand } from '@aws-sdk/client-bedrock-runtime';
 
 /**
- * AWS Bedrock Claude Vision API 호출
+ * AWS Bedrock GPT-5.6 Terra Vision API 호출
  * 이미지를 분석하여 유형 분류 및 데이터 추출을 수행한다.
+ * Converse API를 사용하여 이미지를 전송한다.
  */
 
 export interface BedrockVisionResult {
@@ -52,7 +53,7 @@ let bedrockClient: BedrockRuntimeClient | null = null;
 export function getBedrockClient(): BedrockRuntimeClient {
   if (!bedrockClient) {
     bedrockClient = new BedrockRuntimeClient({
-      region: process.env.AWS_REGION || 'us-east-1',
+      region: process.env.AWS_REGION || 'ap-northeast-2',
     });
   }
   return bedrockClient;
@@ -73,8 +74,9 @@ export function resetBedrockClient(): void {
 }
 
 /**
- * Bedrock Claude Vision API를 호출하여 이미지를 분석한다.
- * 
+ * Bedrock GPT-5.6 Terra Vision으로 이미지를 분석한다.
+ * Converse API를 사용하여 이미지와 텍스트를 함께 전송.
+ *
  * @param imageBase64 - Base64 인코딩된 이미지 데이터 (prefix 없음)
  * @param contentType - 이미지 MIME 타입
  * @returns BedrockVisionResult - 분류 결과 및 추출 데이터
@@ -88,49 +90,57 @@ export async function analyzeImageWithBedrock(
   // data:image/... prefix가 있으면 제거
   const rawBase64 = imageBase64.includes(',') ? imageBase64.split(',')[1] : imageBase64;
 
-  const mediaType = contentType as 'image/jpeg' | 'image/png' | 'image/webp';
+  // Base64를 Uint8Array로 변환
+  const imageBytes = Uint8Array.from(atob(rawBase64), (c) => c.charCodeAt(0));
 
-  const requestBody = {
-    anthropic_version: 'bedrock-2023-05-31',
-    max_tokens: 1024,
+  // MIME 타입을 Converse API format에 맞게 매핑
+  const formatMap: Record<string, 'jpeg' | 'png' | 'webp'> = {
+    'image/jpeg': 'jpeg',
+    'image/png': 'png',
+    'image/webp': 'webp',
+  };
+  const format = formatMap[contentType] ?? 'jpeg';
+
+  const modelId = process.env.BEDROCK_MODEL_ID || 'us.openai.gpt-5.6-terra';
+
+  const command = new ConverseCommand({
+    modelId,
     messages: [
       {
         role: 'user',
         content: [
           {
-            type: 'image',
-            source: {
-              type: 'base64',
-              media_type: mediaType,
-              data: rawBase64,
+            image: {
+              format,
+              source: {
+                bytes: imageBytes,
+              },
             },
           },
           {
-            type: 'text',
             text: ANALYSIS_PROMPT,
           },
         ],
       },
     ],
-  };
-
-  const modelId = process.env.BEDROCK_MODEL_ID || 'anthropic.claude-3-sonnet-20240229-v1:0';
-
-  const command = new InvokeModelCommand({
-    modelId,
-    contentType: 'application/json',
-    accept: 'application/json',
-    body: JSON.stringify(requestBody),
+    inferenceConfig: {
+      maxTokens: 1024,
+      temperature: 0.3,
+    },
   });
 
   const response = await client.send(command);
-  const responseBody = JSON.parse(new TextDecoder().decode(response.body));
 
-  // Claude Messages API response format
-  const textContent = responseBody.content?.find(
-    (block: { type: string }) => block.type === 'text'
-  );
-  const rawText = textContent?.text || '';
+  // Converse API 응답에서 텍스트 추출
+  const outputMessage = response.output?.message;
+  let rawText = '';
+
+  if (outputMessage?.content && outputMessage.content.length > 0) {
+    const textBlock = outputMessage.content.find((block) => 'text' in block);
+    if (textBlock && 'text' in textBlock) {
+      rawText = textBlock.text as string;
+    }
+  }
 
   // JSON 파싱 시도
   const parsed = parseBedrockResponse(rawText);

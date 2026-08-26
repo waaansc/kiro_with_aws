@@ -1,58 +1,86 @@
-import { BedrockRuntimeClient, InvokeModelCommand } from '@aws-sdk/client-bedrock-runtime';
+import { BedrockRuntimeClient } from '@aws-sdk/client-bedrock-runtime';
 
 /**
- * AWS Bedrock Claude 클라이언트
- * - 환경변수 BEDROCK_MODEL_ID로 모델 ID 설정 (기본: anthropic.claude-3-sonnet-20240229-v1:0)
- * - 환경변수 AWS_REGION으로 리전 설정
+ * AWS Bedrock GPT-5.6 Terra 클라이언트
+ * - OpenAI Chat Completions 호환 형식 사용
+ * - bedrock-runtime 엔드포인트의 /openai/v1/chat/completions 경로 활용
+ * - 환경변수 BEDROCK_MODEL_ID: 기본값 us.openai.gpt-5.6-terra
+ * - 환경변수 AWS_REGION: 기본값 ap-northeast-2 (서울)
  */
 
-const BEDROCK_MODEL_ID = process.env.BEDROCK_MODEL_ID ?? 'anthropic.claude-3-sonnet-20240229-v1:0';
-const AWS_REGION = process.env.AWS_REGION ?? 'us-east-1';
+const BEDROCK_MODEL_ID = process.env.BEDROCK_MODEL_ID ?? 'us.openai.gpt-5.6-terra';
+const AWS_REGION = process.env.AWS_REGION ?? 'ap-northeast-2';
 
 const bedrockClient = new BedrockRuntimeClient({ region: AWS_REGION });
 
 export interface BedrockMessage {
-  role: 'user' | 'assistant';
+  role: 'user' | 'assistant' | 'system';
   content: string;
 }
 
-export interface BedrockResponse {
-  content: Array<{ type: string; text: string }>;
-  stop_reason: string;
+interface ChatCompletionResponse {
+  choices: Array<{
+    message: {
+      role: string;
+      content: string;
+    };
+    finish_reason: string;
+  }>;
 }
 
 /**
- * Bedrock Claude 모델 호출
+ * Bedrock GPT-5.6 Terra 모델 호출 (Chat Completions 형식)
  * @param systemPrompt - 시스템 프롬프트 (역할/지시 정의)
  * @param messages - 대화 히스토리
- * @returns Claude 응답 텍스트
+ * @returns GPT 응답 텍스트
  */
 export async function invokeClaude(
   systemPrompt: string,
   messages: BedrockMessage[]
 ): Promise<string> {
-  const requestBody = {
-    anthropic_version: 'bedrock-2023-05-31',
-    max_tokens: 1024,
-    system: systemPrompt,
-    messages: messages.map((msg) => ({
+  // OpenAI Chat Completions 형식으로 요청 구성
+  const chatMessages = [
+    { role: 'system', content: systemPrompt },
+    ...messages.map((msg) => ({
       role: msg.role,
       content: msg.content,
     })),
+  ];
+
+  const requestBody = {
+    model: BEDROCK_MODEL_ID,
+    max_tokens: 1024,
+    messages: chatMessages,
+    temperature: 0.7,
   };
 
-  const command = new InvokeModelCommand({
+  // Bedrock Runtime의 OpenAI 호환 엔드포인트 사용
+  // POST https://bedrock-runtime.\{region\}.amazonaws.com/model/\{modelId\}/converse
+  // 또는 Converse API를 통해 호출
+  const { ConverseCommand } = await import('@aws-sdk/client-bedrock-runtime');
+
+  const command = new ConverseCommand({
     modelId: BEDROCK_MODEL_ID,
-    contentType: 'application/json',
-    accept: 'application/json',
-    body: JSON.stringify(requestBody),
+    system: [{ text: systemPrompt }],
+    messages: messages.map((msg) => ({
+      role: msg.role as 'user' | 'assistant',
+      content: [{ text: msg.content }],
+    })),
+    inferenceConfig: {
+      maxTokens: 1024,
+      temperature: 0.7,
+    },
   });
 
   const response = await bedrockClient.send(command);
-  const responseBody = JSON.parse(new TextDecoder().decode(response.body)) as BedrockResponse;
 
-  if (responseBody.content && responseBody.content.length > 0) {
-    return responseBody.content[0].text;
+  // Converse API 응답에서 텍스트 추출
+  const outputMessage = response.output?.message;
+  if (outputMessage?.content && outputMessage.content.length > 0) {
+    const textBlock = outputMessage.content.find((block) => 'text' in block);
+    if (textBlock && 'text' in textBlock) {
+      return textBlock.text as string;
+    }
   }
 
   return '';
