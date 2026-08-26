@@ -3,6 +3,9 @@ import type { Store } from '../types';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? '/api';
 
+// 위치를 가져올 수 없을 때 기본 좌표 (서울 강남)
+const DEFAULT_POSITION = { lat: 37.4979, lng: 127.0276 };
+
 export type LocationError =
   | 'permission_denied'
   | 'timeout'
@@ -21,9 +24,9 @@ export interface UseLocationReturn {
 
 /**
  * useLocation 커스텀 Hook
- * - Geolocation API로 현재 위치 획득 (10초 타임아웃)
+ * - Geolocation API로 현재 위치 획득 (5초 타임아웃)
+ * - 위치 실패 시 기본 좌표(서울 강남)로 폴백
  * - GET /api/locations/:brand API 호출하여 매장 검색
- * - 에러 처리: 위치 권한 거부, 타임아웃, API 실패
  */
 export function useLocation(): UseLocationReturn {
   const [currentPosition, setCurrentPosition] = useState<{
@@ -36,37 +39,29 @@ export function useLocation(): UseLocationReturn {
   const [lastBrand, setLastBrand] = useState<string | null>(null);
 
   const getCurrentPosition = useCallback((): Promise<{ lat: number; lng: number }> => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       if (!navigator.geolocation) {
-        reject(new Error('position_unavailable'));
+        // Geolocation 미지원 → 기본 좌표 사용
+        resolve(DEFAULT_POSITION);
         return;
       }
 
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          const coords = {
+          resolve({
             lat: position.coords.latitude,
             lng: position.coords.longitude,
-          };
-          resolve(coords);
+          });
         },
-        (err) => {
-          switch (err.code) {
-            case err.PERMISSION_DENIED:
-              reject(new Error('permission_denied'));
-              break;
-            case err.TIMEOUT:
-              reject(new Error('timeout'));
-              break;
-            default:
-              reject(new Error('position_unavailable'));
-              break;
-          }
+        () => {
+          // 위치 실패 (권한 거부, 타임아웃 등) → 기본 좌표로 폴백
+          console.warn('위치를 가져올 수 없어 기본 좌표(서울 강남)를 사용합니다.');
+          resolve(DEFAULT_POSITION);
         },
         {
-          enableHighAccuracy: true,
-          timeout: 10000,
-          maximumAge: 60000,
+          enableHighAccuracy: false,
+          timeout: 5000,
+          maximumAge: 300000,
         },
       );
     });
@@ -80,7 +75,7 @@ export function useLocation(): UseLocationReturn {
       setLastBrand(brand);
 
       try {
-        // Step 1: 현재 위치 획득
+        // Step 1: 현재 위치 획득 (실패 시 기본 좌표)
         const position = await getCurrentPosition();
         setCurrentPosition(position);
 
@@ -102,20 +97,7 @@ export function useLocation(): UseLocationReturn {
         const data = await response.json();
         setStores(data.stores ?? []);
       } catch (err) {
-        if (err instanceof Error) {
-          const errorType = err.message as LocationError;
-          if (
-            errorType === 'permission_denied' ||
-            errorType === 'timeout' ||
-            errorType === 'position_unavailable'
-          ) {
-            setError(errorType);
-          } else {
-            setError('api_failure');
-          }
-        } else {
-          setError('api_failure');
-        }
+        setError('api_failure');
       } finally {
         setLoading(false);
       }
