@@ -129,7 +129,7 @@ app.get('/api/items/:id', (req, res) => {
 
 // POST /api/items
 app.post('/api/items', (req, res) => {
-  const { name, category, subcategory, expiryDate, brand, memo } = req.body;
+  const { name, category, subcategory, expiryDate, brand, memo, imageBase64, imageContentType } = req.body;
 
   // 유효성 검증
   const errors: string[] = [];
@@ -150,6 +150,7 @@ app.post('/api/items', (req, res) => {
     expiryDate,
     brand,
     memo,
+    imageUrl: imageBase64 ? `data:${imageContentType || "image/jpeg"};base64,${imageBase64}` : undefined,
     createdAt: new Date().toISOString(),
     isArchived: false,
   };

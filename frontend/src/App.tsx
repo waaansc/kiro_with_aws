@@ -5,6 +5,7 @@ import DashboardPage from './pages/DashboardPage';
 import ChatPage from './pages/ChatPage';
 import ArchivePage from './pages/ArchivePage';
 import ItemFormPage from './pages/ItemFormPage';
+import ItemDetailPage from './pages/ItemDetailPage';
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Routes>
             <Route path="/" element={<DashboardPage />} />
             <Route path="/items/new" element={<ItemFormPage />} />
+            <Route path="/items/:id" element={<ItemDetailPage />} />
             <Route path="/items/:id/edit" element={<ItemFormPage />} />
             <Route path="/chat" element={<ChatPage />} />
             <Route path="/archive" element={<ArchivePage />} />
