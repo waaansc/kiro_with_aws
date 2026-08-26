@@ -1,0 +1,506 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 프론트엔드 프로젝트 생성 및 설정": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723450814
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723463753
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787724464620
+      }
+    ],
+    "1.2 백엔드 프로젝트 생성 및 설정": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723450915
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723465275
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787724465106
+      }
+    ],
+    "1.3 공통 타입 및 인터페이스 정의": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723450949
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787724471621
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787724618575
+      }
+    ],
+    "2.1 DynamoDB 클라이언트 및 테이블 유틸리티 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723450985
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787724624050
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787724822856
+      }
+    ],
+    "2.2 아이템 생성 API (POST /api/items) 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451032
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787724830993
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725178465
+      }
+    ],
+    "2.5 아이템 조회 API (GET /api/items, GET /api/items/:id) 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451073
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787724831832
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725179393
+      }
+    ],
+    "2.6 아이템 수정 API (PUT /api/items/:id) 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451115
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725208914
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725473225
+      }
+    ],
+    "2.8 아이템 삭제 API (DELETE /api/items/:id) 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451148
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725209801
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725476833
+      }
+    ],
+    "2.9 만료 아이템 아카이브 API 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451174
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725210567
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725474017
+      }
+    ],
+    "3. Checkpoint - 백엔드 CRUD 테스트 확인": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451208
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725493898
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725807101
+      }
+    ],
+    "4.1 D-day 계산 및 색상 유틸리티 함수 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451241
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787724624882
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787724823923
+      }
+    ],
+    "4.6 useItems 커스텀 Hook 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451274
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725211394
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725476805
+      }
+    ],
+    "4.7 useOfflineCache Hook 및 오프라인 모드 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451309
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725212022
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725475194
+      }
+    ],
+    "4.9 DashboardPage 메인 화면 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451341
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725490602
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725803616
+      }
+    ],
+    "4.10 아이템 등록/수정 폼 UI 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451380
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725491626
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725807074
+      }
+    ],
+    "4.11 모바일 반응형 레이아웃 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451408
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725813738
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787726026457
+      }
+    ],
+    "4.12 아카이브 페이지 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451443
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725814624
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787726025872
+      }
+    ],
+    "5. Checkpoint - 핵심 CRUD + 대시보드 동작 확인": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451479
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787726035438
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787726385864
+      }
+    ],
+    "6.1 Chat Lambda 함수 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451507
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787726036048
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787726383405
+      }
+    ],
+    "6.2 Image Analysis Lambda 함수 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451537
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787726036946
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787726384104
+      }
+    ],
+    "6.5 ChatPage 프론트엔드 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451566
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787726393031
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787727059805
+      }
+    ],
+    "7. Checkpoint - AI 챗봇 기능 확인": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451598
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787727068738
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787727271846
+      }
+    ],
+    "8.1 Location Lambda 함수 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451626
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787726037716
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787726384700
+      }
+    ],
+    "8.5 MapModal 프론트엔드 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451657
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787726393553
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787727059285
+      }
+    ],
+    "9.1 API Gateway 라우팅 및 CORS 설정": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451690
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787727067576
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787727272744
+      }
+    ],
+    "9.2 프론트엔드-백엔드 통합 연결": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451718
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787727280046
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787727488639
+      }
+    ],
+    "10. Final Checkpoint - 전체 통합 테스트 확인": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787723451758
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787727281346
+      },
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787727489467
+      }
+    ],
+    "1. 프로젝트 초기 설정 및 공통 인터페이스 정의": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787724618625
+      }
+    ],
+    "2. 아이템 CRUD 백엔드 Lambda 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787725476867
+      }
+    ],
+    "4. D-day 대시보드 프론트엔드 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787726026500
+      }
+    ],
+    "8. 위치 기반 사용처 검색 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787727059338
+      }
+    ],
+    "6. AI 챗봇 및 이미지 분석 구현": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787727059870
+      }
+    ],
+    "9. 전체 통합 및 성능 최적화": [
+      {
+        "executionId": "0ec4193c-8118-4522-baa2-90effeca1fd3",
+        "chatSessionId": "sess_412a0a2c-f742-423c-a5a4-780236b590e6",
+        "timestamp": 1787727488692
+      }
+    ]
+  }
+}
