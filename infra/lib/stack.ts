@@ -38,12 +38,26 @@ export class ExpiryDashboardStack extends cdk.Stack {
       bucketName: `expiry-dashboard-images-${this.account}`,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       autoDeleteObjects: true,
+      blockPublicAccess: new s3.BlockPublicAccess({
+        blockPublicAcls: false,
+        ignorePublicAcls: false,
+        blockPublicPolicy: false,
+        restrictPublicBuckets: false,
+      }),
+      objectOwnership: s3.ObjectOwnership.OBJECT_WRITER,
       cors: [{
         allowedMethods: [s3.HttpMethods.GET, s3.HttpMethods.PUT],
         allowedOrigins: ['*'],
         allowedHeaders: ['*'],
       }],
     });
+
+    // 이미지 퍼블릭 읽기 허용
+    imageBucket.addToResourcePolicy(new iam.PolicyStatement({
+      actions: ['s3:GetObject'],
+      resources: [imageBucket.arnForObjects('items/*')],
+      principals: [new iam.AnyPrincipal()],
+    }));
 
     // ============================================================
     // 3. Lambda IAM Role
@@ -57,6 +71,7 @@ export class ExpiryDashboardStack extends cdk.Stack {
 
     table.grantReadWriteData(lambdaRole);
     imageBucket.grantReadWrite(lambdaRole);
+    imageBucket.grantPutAcl(lambdaRole);
 
     lambdaRole.addToPolicy(new iam.PolicyStatement({
       actions: ['bedrock:InvokeModel', 'bedrock:Converse', 'bedrock:InvokeModelWithResponseStream'],

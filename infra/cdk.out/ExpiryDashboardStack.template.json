@@ -70,6 +70,19 @@
       }
      ]
     },
+    "OwnershipControls": {
+     "Rules": [
+      {
+       "ObjectOwnership": "ObjectWriter"
+      }
+     ]
+    },
+    "PublicAccessBlockConfiguration": {
+     "BlockPublicAcls": false,
+     "BlockPublicPolicy": false,
+     "IgnorePublicAcls": false,
+     "RestrictPublicBuckets": false
+    },
     "Tags": [
      {
       "Key": "aws-cdk:auto-delete-objects",
@@ -129,6 +142,27 @@
          ]
         }
        ]
+      },
+      {
+       "Action": "s3:GetObject",
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": "*"
+       },
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::GetAtt": [
+            "ImageBucket97210811",
+            "Arn"
+           ]
+          },
+          "/items/*"
+         ]
+        ]
+       }
       }
      ],
      "Version": "2012-10-17"
@@ -368,6 +402,27 @@
       },
       {
        "Action": [
+        "s3:PutObjectAcl",
+        "s3:PutObjectVersionAcl"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::GetAtt": [
+            "ImageBucket97210811",
+            "Arn"
+           ]
+          },
+          "/*"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": [
         "bedrock:InvokeModel",
         "bedrock:Converse",
         "bedrock:InvokeModelWithResponseStream"
@@ -403,7 +458,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-962500057795-ap-northeast-2",
-     "S3Key": "1a96e9ef03c2c82f4d7e037954a26bf588c1ed4b233cd968c88a0c6e816a3ead.zip"
+     "S3Key": "6aeeafc80def70285e4770080e123b5f048aae9e0c8caa5b12751669ea24c1cf.zip"
     },
     "Environment": {
      "Variables": {
@@ -434,7 +489,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "ExpiryDashboardStack/ItemsLambda/Resource",
-    "aws:asset:path": "asset.1a96e9ef03c2c82f4d7e037954a26bf588c1ed4b233cd968c88a0c6e816a3ead",
+    "aws:asset:path": "asset.6aeeafc80def70285e4770080e123b5f048aae9e0c8caa5b12751669ea24c1cf",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -444,7 +499,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-962500057795-ap-northeast-2",
-     "S3Key": "2a8db01b52adbc0f6391fc5f557dffb858903f1f523cb4267c5ce5405a2369a2.zip"
+     "S3Key": "efa31252b9905cb34bf63fcdcbbc80a4074ced26cabfb38d1c95a6e1bb57b892.zip"
     },
     "Environment": {
      "Variables": {
@@ -475,7 +530,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "ExpiryDashboardStack/ChatLambda/Resource",
-    "aws:asset:path": "asset.2a8db01b52adbc0f6391fc5f557dffb858903f1f523cb4267c5ce5405a2369a2",
+    "aws:asset:path": "asset.efa31252b9905cb34bf63fcdcbbc80a4074ced26cabfb38d1c95a6e1bb57b892",
     "aws:asset:is-bundled": true,
     "aws:asset:property": "Code"
    }
@@ -2573,7 +2628,7 @@
      "cdk-hnb659fds-assets-962500057795-ap-northeast-2"
     ],
     "SourceObjectKeys": [
-     "b885472ed3cd37d3e9c63e11015319108aca0dd747052e691a86fae2cfb8e85f.zip"
+     "442a8879de7a69c0b8ff776b271e6a5ec87018a05a3b1e388a8f6ee2e327b86f.zip"
     ],
     "DestinationBucketName": {
      "Ref": "FrontendBucketEFE2E19C"

@@ -41,7 +41,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:223:5)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:238:5)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -56,7 +56,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:228:5)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:243:5)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -71,7 +71,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:233:5)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:248:5)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -86,7 +86,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:234:5)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:249:5)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -192,7 +192,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Role2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:51:24)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:65:24)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -208,7 +208,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new NodejsFunction in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:93:25)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:108:25)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -224,7 +224,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new NodejsFunction in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:107:24)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:122:24)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -240,7 +240,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new NodejsFunction in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:121:25)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:136:25)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -256,7 +256,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new NodejsFunction in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:135:28)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:150:28)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -272,7 +272,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:154:17)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:169:17)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -288,7 +288,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:154:17)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:169:17)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -304,7 +304,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:154:17)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:169:17)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -320,7 +320,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Bucket2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:194:28)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:209:28)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -342,7 +342,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Distribution2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:201:26)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:216:26)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -358,7 +358,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new BucketDeployment2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:213:5)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:228:5)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
       ]
     }
@@ -432,7 +432,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:154:17)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:169:17)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -448,7 +448,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:154:17)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:169:17)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -464,7 +464,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:154:17)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:169:17)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -480,7 +480,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Bucket2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:194:28)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:209:28)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)"
       ]
@@ -514,7 +514,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new BucketDeployment2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:213:5)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:228:5)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -530,7 +530,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new BucketDeployment2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:213:5)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:228:5)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -559,7 +559,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:154:17)"
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:169:17)"
       ]
     }
   ],
@@ -572,7 +572,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...RootResource.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:163:34)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:178:34)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -588,7 +588,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Distribution2 in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:201:26)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:216:26)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)"
       ]
@@ -616,7 +616,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...RootResource.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:163:34)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:178:34)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
       ]
     }
@@ -630,7 +630,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:164:39)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:179:39)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -646,7 +646,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:178:38)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:193:38)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -662,7 +662,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:186:43)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:201:43)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -678,7 +678,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:164:39)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:179:39)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
       ]
     }
@@ -692,7 +692,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:165:42)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:180:42)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -708,7 +708,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:166:50)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:181:50)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -724,7 +724,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:170:19)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:185:19)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -740,7 +740,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:170:19)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:185:19)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -756,7 +756,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:170:19)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:185:19)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -772,7 +772,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:171:19)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:186:19)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -788,7 +788,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:171:19)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:186:19)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -804,7 +804,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:171:19)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:186:19)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -820,7 +820,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:178:38)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:193:38)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
       ]
     }
@@ -834,7 +834,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:180:18)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:195:18)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -850,7 +850,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:180:18)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:195:18)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -866,7 +866,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:180:18)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:195:18)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -882,7 +882,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:182:44)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:197:44)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -898,7 +898,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:186:43)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:201:43)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
       ]
     }
@@ -912,7 +912,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:187:45)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:202:45)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -928,7 +928,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:165:42)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:180:42)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
       ]
     }
@@ -942,7 +942,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:167:44)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:182:44)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -958,7 +958,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:172:20)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:187:20)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -974,7 +974,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:172:20)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:187:20)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -990,7 +990,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:172:20)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:187:20)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -1006,7 +1006,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:173:20)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:188:20)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -1022,7 +1022,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:173:20)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:188:20)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -1038,7 +1038,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:173:20)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:188:20)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -1054,7 +1054,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:174:20)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:189:20)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -1070,7 +1070,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:174:20)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:189:20)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -1086,7 +1086,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:174:20)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:189:20)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -1102,7 +1102,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:166:50)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:181:50)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
       ]
     }
@@ -1116,7 +1116,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:175:28)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:190:28)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -1132,7 +1132,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:175:28)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:190:28)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -1148,7 +1148,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:175:28)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:190:28)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -1164,7 +1164,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:182:44)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:197:44)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
       ]
     }
@@ -1178,7 +1178,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:184:23)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:199:23)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -1194,7 +1194,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:184:23)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:199:23)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -1210,7 +1210,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:184:23)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:199:23)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -1226,7 +1226,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:187:45)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:202:45)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
       ]
     }
@@ -1240,7 +1240,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:189:19)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:204:19)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -1256,7 +1256,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:189:19)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:204:19)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -1272,7 +1272,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:189:19)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:204:19)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."
@@ -1288,7 +1288,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:167:44)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:182:44)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)"
       ]
     }
@@ -1302,7 +1302,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:176:21)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:191:21)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -1318,7 +1318,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:176:21)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:191:21)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals..."
@@ -1334,7 +1334,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:176:21)",
+        "new ExpiryDashboardStack (/Users/simchang-wan/kiro_project/infra/lib/stack.ts:191:21)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:7:1)",
         "<anonymous> (/Users/simchang-wan/kiro_project/infra/bin/app.ts:12:2)",
         "...node internals, tsx..."

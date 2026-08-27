@@ -192,7 +192,8 @@ async function uploadImage(itemId, imageBase64, contentType) {
         Bucket: IMAGE_BUCKET,
         Key: key,
         Body: imageBuffer,
-        ContentType: contentType
+        ContentType: contentType,
+        ACL: "public-read"
       })
     );
     const imageUrl = `https://${IMAGE_BUCKET}.s3.amazonaws.com/${key}`;
