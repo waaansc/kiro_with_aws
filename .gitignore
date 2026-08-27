@@ -4,6 +4,7 @@ node_modules/
 # Build output
 backend/dist/
 frontend/dist/
+infra/cdk.out/
 
 # Environment files
 *.local
