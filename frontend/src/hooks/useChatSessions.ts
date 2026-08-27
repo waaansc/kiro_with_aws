@@ -39,7 +39,28 @@ function loadFromStorage(): StoredSessions {
 }
 
 function saveToStorage(data: StoredSessions): void {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  // localStorage 용량 초과 방지: imageBase64 제거 후 저장
+  const cleaned: StoredSessions = {
+    ...data,
+    sessions: data.sessions.map((session) => ({
+      ...session,
+      messages: session.messages.map((msg) => {
+        const { imageBase64, imageContentType, ...rest } = msg as any;
+        return rest;
+      }),
+    })),
+  };
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cleaned));
+  } catch {
+    // localStorage 가득 찬 경우 오래된 세션 정리 후 재시도
+    cleaned.sessions = cleaned.sessions.slice(0, 3);
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(cleaned));
+    } catch {
+      // 그래도 안 되면 포기
+    }
+  }
 }
 
 export interface UseChatSessionsReturn {

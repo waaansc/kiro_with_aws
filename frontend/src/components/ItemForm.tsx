@@ -1,3 +1,4 @@
+import { resizeImage } from '../utils/image-resize';
 import { useState, useRef, type FormEvent, type ChangeEvent } from 'react';
 import type { Category, CreateItemRequest, UpdateItemRequest } from '../types';
 
@@ -141,18 +142,14 @@ export default function ItemForm({
 
     setErrors((prev) => ({ ...prev, image: undefined }));
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = reader.result as string;
-      // result is "data:<type>;base64,<data>"
-      const base64Data = result.split(',')[1];
-      setImageBase64(base64Data);
-      setImageContentType(
-        file.type as 'image/jpeg' | 'image/png' | 'image/webp',
-      );
-      setImagePreview(result);
-    };
-    reader.readAsDataURL(file);
+    // 이미지 리사이즈 후 저장
+    resizeImage(file).then(({ base64, contentType }) => {
+      setImageBase64(base64);
+      setImageContentType(contentType as 'image/jpeg' | 'image/png' | 'image/webp');
+      setImagePreview(`data:${contentType};base64,${base64}`);
+    }).catch(() => {
+      setErrors((prev) => ({ ...prev, image: '이미지를 처리할 수 없습니다.' }));
+    });
   }
 
   function handleRemoveImage() {

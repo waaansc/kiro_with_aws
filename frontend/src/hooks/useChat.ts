@@ -7,6 +7,7 @@ import type {
   ImageAnalysisResponse,
 } from '../types';
 import { useChatSessions } from './useChatSessions';
+import { resizeImage } from '../utils/image-resize';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? '/api';
 
@@ -150,13 +151,13 @@ export function useChat(): UseChatReturn {
     setLoading(true);
 
     try {
-      const base64 = await fileToBase64(file);
+      const { base64, contentType } = await resizeImage(file);
       const response = await fetchWithTimeout(
         `${API_BASE_URL}/chat/image`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ imageBase64: base64, imageContentType: file.type }),
+          body: JSON.stringify({ imageBase64: base64, imageContentType: contentType }),
         },
         IMAGE_TIMEOUT_MS,
       );
@@ -172,7 +173,7 @@ export function useChat(): UseChatReturn {
         addMessage({ id: generateId(), role: 'assistant', content: data.message || '정보를 추출하지 못했습니다.' });
         return;
       }
-      addMessage({ id: generateId(), role: 'assistant', content: data.message, imageAnalysis: data, imageBase64: base64, imageContentType: file.type });
+      addMessage({ id: generateId(), role: 'assistant', content: data.message, imageAnalysis: data, imageBase64: base64, imageContentType: contentType });
     } catch (error) {
       const msg = error instanceof DOMException && error.name === 'AbortError'
         ? '이미지 분석 시간 초과.' : '네트워크 오류.';
@@ -229,11 +230,4 @@ export function useChat(): UseChatReturn {
   };
 }
 
-function fileToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve((reader.result as string).split(',')[1]);
-    reader.onerror = () => reject(new Error('파일 읽기 실패'));
-    reader.readAsDataURL(file);
-  });
-}
+

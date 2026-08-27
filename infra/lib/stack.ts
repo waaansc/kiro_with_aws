@@ -156,7 +156,7 @@ export class ExpiryDashboardStack extends cdk.Stack {
       bundling: commonBundling,
       environment: {
         ...lambdaEnvironment,
-        KAKAO_API_KEY: process.env.KAKAO_API_KEY || '',
+        KAKAO_API_KEY: process.env.KAKAO_REST_API_KEY || '',
       },
       role: lambdaRole,
       timeout: cdk.Duration.seconds(10),
