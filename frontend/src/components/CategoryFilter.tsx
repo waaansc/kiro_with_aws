@@ -18,18 +18,12 @@ const filterOptions: FilterOption[] = [
   { label: '기타', value: 'other' },
 ];
 
-/**
- * 카테고리 필터 바 컴포넌트
- * - 전체, 기프티콘, 식재료, 정기결제, 기타 버튼
- * - 활성 필터 하이라이트
- * - 최소 44px x 44px 탭 대상
- */
 export function CategoryFilter({
   activeCategory,
   onCategoryChange,
 }: CategoryFilterProps) {
   return (
-    <div className="flex gap-2 overflow-x-auto pb-2" role="group" aria-label="카테고리 필터">
+    <div className="flex gap-6 overflow-x-auto pb-2" role="group" aria-label="카테고리 필터">
       {filterOptions.map((option) => {
         const isActive = activeCategory === option.value;
         return (
@@ -37,10 +31,10 @@ export function CategoryFilter({
             key={option.label}
             type="button"
             onClick={() => onCategoryChange(option.value)}
-            className={`min-w-[44px] min-h-[44px] px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+            className={`min-w-[44px] min-h-[44px] py-2 text-sm whitespace-nowrap transition-colors border-b-2 ${
               isActive
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'text-gray-900 font-semibold border-gray-900'
+                : 'text-gray-400 font-normal border-transparent hover:text-gray-600'
             }`}
             aria-pressed={isActive}
           >

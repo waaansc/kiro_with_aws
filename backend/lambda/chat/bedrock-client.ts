@@ -51,7 +51,6 @@ export async function invokeClaude(
     model: BEDROCK_MODEL_ID,
     max_tokens: 1024,
     messages: chatMessages,
-    temperature: 0.7,
   };
 
   // Bedrock Runtime의 OpenAI 호환 엔드포인트 사용
@@ -68,7 +67,6 @@ export async function invokeClaude(
     })),
     inferenceConfig: {
       maxTokens: 1024,
-      temperature: 0.7,
     },
   });
 

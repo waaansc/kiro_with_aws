@@ -1,0 +1,23 @@
+{
+  "name": "kiro_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waaansc/kiro_with_aws.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waaansc/kiro_with_aws/issues"
+  },
+  "homepage": "https://github.com/waaansc/kiro_with_aws#readme",
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

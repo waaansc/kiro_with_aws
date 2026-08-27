@@ -27,55 +27,7 @@ interface Item {
   isArchived: boolean;
 }
 
-let items: Item[] = [
-  {
-    id: uuidv4(),
-    name: '스타벅스 아메리카노',
-    category: 'gifticon',
-    expiryDate: '2025-08-15',
-    brand: '스타벅스',
-    memo: '생일 선물',
-    createdAt: new Date().toISOString(),
-    isArchived: false,
-  },
-  {
-    id: uuidv4(),
-    name: '서울우유 1L',
-    category: 'food',
-    subcategory: '냉장',
-    expiryDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-    createdAt: new Date().toISOString(),
-    isArchived: false,
-  },
-  {
-    id: uuidv4(),
-    name: '넷플릭스 구독',
-    category: 'subscription',
-    subcategory: '구독 서비스',
-    expiryDate: new Date(Date.now() + 25 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-    brand: '넷플릭스',
-    createdAt: new Date().toISOString(),
-    isArchived: false,
-  },
-  {
-    id: uuidv4(),
-    name: '투썸플레이스 케이크',
-    category: 'gifticon',
-    expiryDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-    brand: '투썸플레이스',
-    createdAt: new Date().toISOString(),
-    isArchived: false,
-  },
-  {
-    id: uuidv4(),
-    name: '계란 10구',
-    category: 'food',
-    subcategory: '냉장',
-    expiryDate: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-    createdAt: new Date().toISOString(),
-    isArchived: false,
-  },
-];
+let items: Item[] = [];
 
 // === D-day 계산 ===
 function calculateDday(expiryDate: string): number {

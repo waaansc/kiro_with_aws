@@ -225,15 +225,12 @@ export function useItems(): UseItemsReturn {
         throw new Error(message);
       }
 
-      // Remove archived items from local state (they have dday < 0)
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      const activeItems = state.items.filter((item) => {
-        const expiry = new Date(item.expiryDate);
-        expiry.setHours(0, 0, 0, 0);
-        return expiry.getTime() >= today.getTime();
-      });
-      dispatch({ type: 'SET_ITEMS', payload: activeItems });
+      // 아카이브 후 목록 다시 조회
+      const refetchResponse = await fetch(`${API_BASE_URL}/items`);
+      if (refetchResponse.ok) {
+        const data = await refetchResponse.json();
+        dispatch({ type: 'SET_ITEMS', payload: data.items });
+      }
       dispatch({ type: 'SET_OFFLINE', payload: false });
     } catch (error) {
       if (error instanceof TypeError) {

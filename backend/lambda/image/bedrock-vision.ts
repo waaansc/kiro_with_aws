@@ -125,7 +125,6 @@ export async function analyzeImageWithBedrock(
     ],
     inferenceConfig: {
       maxTokens: 1024,
-      temperature: 0.3,
     },
   });
 

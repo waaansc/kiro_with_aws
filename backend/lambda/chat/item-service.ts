@@ -125,16 +125,22 @@ export async function searchItems(query: {
   }
 
   if (keyword) {
-    filterExpression += ' AND contains(#itemName, :keyword)';
+    filterExpression += ' AND (contains(#itemName, :keyword) OR contains(#itemBrand, :keyword))';
     expressionAttributeValues[':keyword'] = keyword;
+  }
+
+  const expressionAttributeNames: Record<string, string> = {};
+  if (keyword) {
+    expressionAttributeNames['#itemName'] = 'name';
+    expressionAttributeNames['#itemBrand'] = 'brand';
   }
 
   const command = new ScanCommand({
     TableName: TABLE_NAME,
     FilterExpression: filterExpression,
     ExpressionAttributeValues: expressionAttributeValues,
-    ...(keyword && {
-      ExpressionAttributeNames: { '#itemName': 'name' },
+    ...(Object.keys(expressionAttributeNames).length > 0 && {
+      ExpressionAttributeNames: expressionAttributeNames,
     }),
   });
 

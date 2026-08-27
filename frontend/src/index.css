@@ -12,15 +12,17 @@ html {
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', 'Segoe UI', Roboto, sans-serif;
+  color: #1A1A1A;
+  background: #FFFFFF;
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Requirement 10.4: 최소 14px 본문 폰트 크기 */
+/* 최소 14px 본문 폰트 크기 */
 p, span, li, td, th, label, input, textarea, select, button {
   font-size: max(0.875rem, 14px);
 }

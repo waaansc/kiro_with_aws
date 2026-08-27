@@ -178,7 +178,7 @@ export default function ItemForm({
           htmlFor="item-name"
           className="block text-sm font-medium text-gray-700 mb-1"
         >
-          이름 <span className="text-red-500">*</span>
+          이름 <span className="text-gray-900">*</span>
         </label>
         <input
           id="item-name"
@@ -187,7 +187,7 @@ export default function ItemForm({
           onChange={(e) => setName(e.target.value)}
           maxLength={50}
           placeholder="아이템 이름을 입력하세요"
-          className="w-full min-h-[44px] px-3 py-2 border border-gray-300 rounded-lg text-[14px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full min-h-[44px] px-3 py-2 border border-gray-300 rounded-lg text-[14px] focus:outline-none focus:outline-none focus:border-gray-400"
           aria-invalid={!!errors.name}
           aria-describedby={errors.name ? 'name-error' : undefined}
         />
@@ -204,13 +204,13 @@ export default function ItemForm({
           htmlFor="item-category"
           className="block text-sm font-medium text-gray-700 mb-1"
         >
-          카테고리 <span className="text-red-500">*</span>
+          카테고리 <span className="text-gray-900">*</span>
         </label>
         <select
           id="item-category"
           value={category}
           onChange={handleCategoryChange}
-          className="w-full min-h-[44px] px-3 py-2 border border-gray-300 rounded-lg text-[14px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full min-h-[44px] px-3 py-2 border border-gray-300 rounded-lg text-[14px] focus:outline-none focus:outline-none focus:border-gray-400"
           aria-invalid={!!errors.category}
           aria-describedby={errors.category ? 'category-error' : undefined}
         >
@@ -240,7 +240,7 @@ export default function ItemForm({
             id="item-subcategory"
             value={subcategory}
             onChange={(e) => setSubcategory(e.target.value)}
-            className="w-full min-h-[44px] px-3 py-2 border border-gray-300 rounded-lg text-[14px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full min-h-[44px] px-3 py-2 border border-gray-300 rounded-lg text-[14px] focus:outline-none focus:outline-none focus:border-gray-400"
           >
             <option value="">선택 안 함</option>
             {subcategoryOptions.map((sub) => (
@@ -258,14 +258,14 @@ export default function ItemForm({
           htmlFor="item-expiry"
           className="block text-sm font-medium text-gray-700 mb-1"
         >
-          만료일 <span className="text-red-500">*</span>
+          만료일 <span className="text-gray-900">*</span>
         </label>
         <input
           id="item-expiry"
           type="date"
           value={expiryDate}
           onChange={(e) => setExpiryDate(e.target.value)}
-          className="w-full min-h-[44px] px-3 py-2 border border-gray-300 rounded-lg text-[14px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full min-h-[44px] px-3 py-2 border border-gray-300 rounded-lg text-[14px] focus:outline-none focus:outline-none focus:border-gray-400"
           aria-invalid={!!errors.expiryDate}
           aria-describedby={errors.expiryDate ? 'expiry-error' : undefined}
         />
@@ -290,7 +290,7 @@ export default function ItemForm({
           value={brand}
           onChange={(e) => setBrand(e.target.value)}
           placeholder="브랜드명 (선택)"
-          className="w-full min-h-[44px] px-3 py-2 border border-gray-300 rounded-lg text-[14px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full min-h-[44px] px-3 py-2 border border-gray-300 rounded-lg text-[14px] focus:outline-none focus:outline-none focus:border-gray-400"
         />
       </div>
 
@@ -308,7 +308,7 @@ export default function ItemForm({
           onChange={(e) => setMemo(e.target.value)}
           placeholder="메모 (선택)"
           rows={3}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[14px] focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+          className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[14px] focus:outline-none focus:outline-none focus:border-gray-400 resize-none"
         />
       </div>
 
@@ -326,7 +326,7 @@ export default function ItemForm({
           type="file"
           accept="image/jpeg,image/png,image/webp"
           onChange={handleImageChange}
-          className="w-full min-h-[44px] px-3 py-2 text-[14px] file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:bg-blue-50 file:text-blue-700 file:cursor-pointer"
+          className="w-full min-h-[44px] px-3 py-2 text-[14px] file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:bg-gray-100 file:text-gray-700 file:cursor-pointer"
           aria-describedby={errors.image ? 'image-error' : 'image-hint'}
         />
         <p id="image-hint" className="mt-1 text-xs text-gray-500">
@@ -361,7 +361,7 @@ export default function ItemForm({
         <button
           type="submit"
           disabled={loading}
-          className="flex-1 min-h-[44px] bg-blue-600 text-white rounded-lg text-[14px] font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex-1 min-h-[44px] bg-gray-900 text-white rounded-lg text-[14px] font-medium disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading
             ? '처리 중...'
@@ -372,7 +372,7 @@ export default function ItemForm({
         <button
           type="button"
           onClick={onCancel}
-          className="flex-1 min-h-[44px] bg-gray-200 text-gray-700 rounded-lg text-[14px] font-medium"
+          className="flex-1 min-h-[44px] border border-gray-200 text-gray-700 rounded-lg text-[14px] font-medium"
         >
           취소
         </button>

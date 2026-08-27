@@ -39,66 +39,59 @@ export default function ArchivePage() {
   };
 
   return (
-    <div className="p-4 max-w-md mx-auto">
-      <h1 className="text-2xl font-bold mb-4">아카이브</h1>
+    <div className="px-5 pt-12 pb-20 max-w-lg mx-auto">
+      <h1 className="text-4xl font-bold text-gray-900 mb-8">아카이브</h1>
 
       {loading && (
-        <div className="flex justify-center py-8">
-          <span className="text-gray-500 text-sm">로딩 중...</span>
+        <div className="flex justify-center py-16">
+          <div className="w-6 h-6 border-2 border-gray-900 border-t-transparent rounded-full animate-spin" />
         </div>
       )}
 
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm mb-4">
+        <div className="text-sm text-red-600 mb-4">
           {error}
         </div>
       )}
 
       {!loading && items.length === 0 && !error && (
-        <div className="text-center py-12">
-          <p className="text-gray-500 text-base">
+        <div className="text-center py-20">
+          <p className="text-gray-400 text-sm">
             아카이브된 아이템이 없습니다.
           </p>
         </div>
       )}
 
       {items.length > 0 && (
-        <div className="flex flex-col gap-3">
+        <div className="space-y-0">
           {items.map((item: ItemSummary) => (
             <div
               key={item.id}
-              className="flex items-center justify-between p-4 rounded-lg border border-gray-200 bg-gray-50"
+              className="flex items-center justify-between py-4 border-b border-gray-100"
             >
               <div className="flex-1 min-w-0">
-                <p className="text-base font-medium truncate text-gray-700">
+                <p className="text-sm font-semibold text-gray-900 truncate">
                   {item.name}
                 </p>
-                <div className="flex items-center gap-2 mt-1 flex-wrap">
-                  <span className="text-xs text-gray-500">
-                    {categoryLabel[item.category] ?? item.category}
-                  </span>
-                  {item.brand && (
-                    <span className="text-xs text-gray-500">
-                      · {item.brand}
-                    </span>
-                  )}
-                  <span className="text-xs text-gray-500">
-                    · {item.expiryDate}
-                  </span>
-                </div>
+                <p className="text-xs mt-0.5">
+                  {categoryLabel[item.category] ?? item.category}
+                  {item.brand && ` · ${item.brand}`}
+                  {` · `}<span className="text-red-500">{item.expiryDate}</span>
+                  {item.brand && ` · ${item.brand}`}
+                </p>
               </div>
-              <div className="flex items-center gap-2 ml-3">
+              <div className="flex items-center gap-2 ml-4">
                 <button
                   type="button"
                   onClick={() => handleRestore(item.id)}
-                  className="min-w-[44px] min-h-[44px] px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100"
+                  className="min-w-[44px] min-h-[44px] px-3 py-2 text-xs font-medium text-gray-700 border border-gray-200 rounded-lg hover:bg-gray-50"
                 >
                   복원
                 </button>
                 <button
                   type="button"
                   onClick={() => handleDeleteClick(item.id)}
-                  className="min-w-[44px] min-h-[44px] px-3 py-2 text-sm font-medium text-red-600 bg-red-50 border border-red-200 rounded-lg hover:bg-red-100"
+                  className="min-w-[44px] min-h-[44px] px-3 py-2 text-xs font-medium text-gray-700 border border-gray-200 rounded-lg hover:bg-gray-50"
                 >
                   삭제
                 </button>
@@ -110,23 +103,26 @@ export default function ArchivePage() {
 
       {/* 삭제 확인 다이얼로그 */}
       {confirmDeleteId && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="bg-white rounded-lg p-6 mx-4 max-w-sm w-full shadow-xl">
-            <p className="text-base font-medium text-gray-900 mb-4">
-              정말 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          <div className="bg-white rounded-lg p-6 mx-5 max-w-sm w-full">
+            <p className="text-base font-semibold text-gray-900 mb-1">
+              정말 삭제하시겠습니까?
             </p>
-            <div className="flex gap-3 justify-end">
+            <p className="text-sm text-gray-400 mb-6">
+              이 작업은 되돌릴 수 없습니다.
+            </p>
+            <div className="flex gap-3">
               <button
                 type="button"
                 onClick={handleDeleteCancel}
-                className="min-w-[44px] min-h-[44px] px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200"
+                className="flex-1 min-h-[44px] text-sm font-medium text-gray-700 border border-gray-200 rounded-lg hover:bg-gray-50"
               >
                 취소
               </button>
               <button
                 type="button"
                 onClick={handleDeleteConfirm}
-                className="min-w-[44px] min-h-[44px] px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700"
+                className="flex-1 min-h-[44px] text-sm font-medium text-white bg-gray-900 rounded-lg hover:opacity-80"
               >
                 삭제
               </button>
